@@ -1,36 +1,59 @@
 import styled from "styled-components";
-import DECK from "./Decks.js";
+import DECK from "../assets/Decks.js";
 import setaPlay from "../assets/seta_play.png";
 import setaVirar from "../assets/seta_virar.png";
+import { useState } from "react";
 
 function Flashcards(props) {
+  const {index, question, answer, pressed, setPressed} = props
+  const [showAnswer, setShowAnswer] = useState(false)
+
+  function turnAndDisable(index) {
+    pressed.push(index);
+    const newPressed = [...pressed];
+    setPressed(newPressed);
+  }
+ 
   return (
     <>
-      <ClosedQuestion>
-        <p>{`Pergunta ` + props.number}</p>
-        <img src={setaPlay} alt="seta play" />
-      </ClosedQuestion>
-      <OpenQuestion>
-        <p>{props.question}</p>
-        <img src={setaVirar} alt="seta virar" />
-      </OpenQuestion>
+      {pressed.includes(index) ? (
+        <OpenQuestion>
+          <p>{showAnswer ? answer : question}</p>
+          {!showAnswer ? <img onClick={() => setShowAnswer(true)} src={setaVirar} alt="seta virar" /> : ''}
+        </OpenQuestion>
+      ) : (
+        <ClosedQuestion>
+          <p>{`Pergunta ` + (index + 1)}</p>
+          <img
+            onClick={pressed.length === 0 ? () => turnAndDisable(index) : () => ''}
+            src={setaPlay}
+            alt="seta play"
+          />
+        </ClosedQuestion>
+      )}
     </>
   );
 }
 
 export default function Questions() {
-  return (
-    <>
-      {DECK.map((flash, index) => (
-        <Flashcards
-          key={index}
-          number={index}
-          question={flash.question}
-          answer={flash.answer}
-        />
-      ))}
-    </>
-  );
+  
+  const layout = [];
+  const [pressed, setPressed] = useState([]);
+
+  DECK.forEach((flash, index) => {
+    layout.push(
+      <Flashcards
+        key={index}
+        index={index}
+        question={flash.question}
+        answer={flash.answer}
+        pressed={pressed}
+        setPressed={setPressed}
+      />
+    );
+  });
+
+  return <>{layout}</>;
 }
 
 const ClosedQuestion = styled.div`
@@ -79,7 +102,7 @@ const OpenQuestion = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  img{
+  img {
     position: absolute;
     bottom: 10px;
     right: 10px;
