@@ -1,17 +1,46 @@
 import Answers from "./Answers";
 import Questions from "./Questions";
 import styled from "styled-components";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
+import { useState } from "react";
+import DECK from "../assets/deck";
 
 export default function ZapRecallMain() {
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [pressed, setPressed] = useState([]);
+  const [answered, setAnswered] = useState([]);
+  const [answerColor, setAnswerColor] = useState([]);
+  const [answerIcon, setAnswerIcon] = useState([]);
+
   return (
     <ScreenContainer>
-        <LogoContainer>
-            <img src={logo} alt="Logo do Flash"/>
-            <h1>ZapRecall</h1>
-        </LogoContainer>
-        <Questions />
-        <Answers />
+      <LogoContainer>
+        <img src={logo} alt="Logo do Flash" />
+        <h1>ZapRecall</h1>
+      </LogoContainer>
+      <Questions
+        showAnswer={showAnswer}
+        setShowAnswer={setShowAnswer}
+        answered={answered}
+        pressed={pressed}
+        setPressed={setPressed}
+        answerColor={answerColor}
+        deck={DECK}
+        answerIcon={answerIcon}
+      />
+      <Answers
+        showAnswer={showAnswer}
+        setShowAnswer={setShowAnswer}
+        answered={answered}
+        setAnswered={setAnswered}
+        pressed={pressed}
+        setPressed={setPressed}
+        answerColor={answerColor}
+        setAnswerColor={setAnswerColor}
+        deckSize={DECK.length}
+        answerIcon={answerIcon}
+        setAnswerIcon={setAnswerIcon}
+      />
     </ScreenContainer>
   );
 }

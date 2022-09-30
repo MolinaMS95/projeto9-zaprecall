@@ -1,14 +1,69 @@
+import { useState } from "react";
 import styled from "styled-components";
+import certo from "../assets/icone_certo.png"
+import erro from "../assets/icone_erro.png"
+import quase from "../assets/icone_quase.png"
 
-export default function Answers() {
+export default function Answers(props) {
+  const {
+    showAnswer,
+    answered,
+    setAnswered,
+    pressed,
+    setPressed,
+    setShowAnswer,
+    answerColor,
+    setAnswerColor,
+    deckSize,
+    answerIcon,
+    setAnswerIcon
+  } = props;
+  const [completed, setCompleted] = useState(0);
+
+  function toAnswer(color, icon) {
+    const newAnswered = [...answered];
+    newAnswered.push(pressed[0]);
+    setAnswered(newAnswered);
+
+    const newAnswerColor = [...answerColor];
+    newAnswerColor[pressed[0]] = color;
+    setAnswerColor(newAnswerColor);
+
+    const newAnswerIcon = [...answerIcon];
+    newAnswerIcon[pressed[0]] = icon;
+    setAnswerIcon(newAnswerIcon);
+
+    setPressed([]);
+    setShowAnswer(false);
+    setCompleted(completed + 1);
+  }
+
   return (
     <FooterConcluded>
       <div className="button-container">
-        <Button color="green">Não lembrei</Button>
-        <Button color="yellow">Quase não lembrei</Button>
-        <Button color="red">Zap!</Button>
+        <Button
+          color="red"
+          onClick={() => toAnswer("#FF3030", erro)}
+          disabled={!showAnswer}
+        >
+          Não lembrei
+        </Button>
+        <Button
+          color="yellow"
+          onClick={() => toAnswer("#FF922E", quase)}
+          disabled={!showAnswer}
+        >
+          Quase não lembrei
+        </Button>
+        <Button
+          color="green"
+          onClick={() => toAnswer("#2FBE34", certo)}
+          disabled={!showAnswer}
+        >
+          Zap!
+        </Button>
       </div>
-      <TextConcluded>0/4 CONCLUÍDOS</TextConcluded>
+      <TextConcluded>{completed}/{deckSize} CONCLUÍDOS</TextConcluded>
     </FooterConcluded>
   );
 }
