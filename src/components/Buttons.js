@@ -18,7 +18,7 @@ export default function Buttons(props) {
     answerIcon,
     setAnswerIcon,
     size,
-    meta
+    meta,
   } = props;
 
   function toAnswer(color, icon) {
@@ -36,16 +36,15 @@ export default function Buttons(props) {
 
     setPressed([]);
     setShowAnswer(false);
-    
-    if(icon === certo){
-        right++;
+
+    if (icon === certo) {
+      right++;
     }
 
-    if(newAnswered.length === size && right >=meta){
-      alert(`Parabéns! Você atingiu sua meta de ${meta} Zaps`)
-    }
-    else if(newAnswered.length === size && right < meta){
-      alert(`Putz! Você não atingiu sua meta de ${meta} Zaps`)
+    if (newAnswered.length === size && right >= meta) {
+      alert(`Parabéns! Você atingiu sua meta de ${meta} Zaps`);
+    } else if (newAnswered.length === size && right < meta) {
+      alert(`Putz! Você não atingiu sua meta de ${meta} Zaps`);
     }
   }
 
@@ -93,11 +92,11 @@ function changeButtonColor(color) {
 }
 
 const ButtonContainer = styled.div`
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 
-    margin-top: 20px;
+  margin-top: 20px;
 `;
 
 const Button = styled.button`

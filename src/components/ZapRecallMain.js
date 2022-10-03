@@ -4,7 +4,7 @@ import styled from "styled-components";
 import logo from "../assets/logo.png";
 import { useState } from "react";
 
-export default function ZapRecallMain({selectedDeck, meta}) {
+export default function ZapRecallMain({ selectedDeck, meta }) {
   const [answerIcon, setAnswerIcon] = useState([]);
 
   return (
@@ -19,10 +19,7 @@ export default function ZapRecallMain({selectedDeck, meta}) {
         setAnswerIcon={setAnswerIcon}
         meta={meta}
       />
-      <Footer
-        deckSize={selectedDeck.length}
-        answerIcon={answerIcon}
-      />
+      <Footer deckSize={selectedDeck.length} answerIcon={answerIcon} />
     </ScreenContainer>
   );
 }

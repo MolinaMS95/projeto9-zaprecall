@@ -7,15 +7,13 @@ export default function WelcomeScreen({
   setSelectedDeck,
   setMeta,
   selectedDeck,
-  meta
+  meta,
 }) {
-
-  function startGame(){
-    if(selectedDeck !== '' && meta >= 1 && meta <= selectedDeck.length){
+  function startGame() {
+    if (selectedDeck !== "" && meta >= 1 && meta <= selectedDeck.length) {
       setStart(true);
-    }
-    else{
-      alert(`Escolha um deck e uma meta entre 1 e ${selectedDeck.length}`)
+    } else {
+      alert(`Escolha um deck e uma meta entre 1 e ${selectedDeck.length}`);
     }
   }
 

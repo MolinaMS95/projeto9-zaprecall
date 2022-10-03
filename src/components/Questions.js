@@ -2,18 +2,12 @@ import Flashcards from "./Flashcards.js";
 import { useState } from "react";
 
 export default function Questions(props) {
-
   const [showAnswer, setShowAnswer] = useState(false);
   const [pressed, setPressed] = useState([]);
   const [answered, setAnswered] = useState([]);
   const [answerColor, setAnswerColor] = useState([]);
 
-  const {
-    deck,
-    answerIcon,
-    setAnswerIcon,
-    meta
-  } = props;
+  const { deck, answerIcon, setAnswerIcon, meta } = props;
   const layout = [];
 
   deck.forEach((flash, index) => {

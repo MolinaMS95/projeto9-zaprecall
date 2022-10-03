@@ -19,7 +19,7 @@ export default function Flashcards(props) {
     setAnswerColor,
     setAnswerIcon,
     size,
-    meta
+    meta,
   } = props;
 
   function turnAndDisable(index) {
