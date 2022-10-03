@@ -23,18 +23,28 @@ export default function WelcomeScreen({
         <img src={logo} alt="Logo do Flash" />
         <h1>ZapRecall</h1>
       </LogoContainer>
-      <DeckSelector onChange={(e) => setSelectedDeck(decks[e.target.value])}>
+      <DeckSelector
+        onChange={(e) => setSelectedDeck(decks[e.target.value])}
+        data-identifier="deck-selector"
+      >
         <option disabled selected>
           Escolha seu deck
         </option>
-        <option value="0">React</option>
-        <option value="1">Naruto</option>
+        <option value="0" data-identifier="deck-option">
+          React
+        </option>
+        <option value="1" data-identifier="deck-option">
+          Naruto
+        </option>
       </DeckSelector>
       <ZapMetaInput
         placeholder="Digite sua meta de zaps..."
         onChange={(e) => setMeta(e.target.value)}
+        data-identifier="goals-input"
       />
-      <StartButton onClick={startGame}>Iniciar Recall!</StartButton>
+      <StartButton onClick={startGame} data-identifier="start-btn">
+        Iniciar Recall!
+      </StartButton>
     </ScreenContainer>
   );
 }

@@ -8,14 +8,21 @@ export default function Footer(props) {
 
   answerIcon.forEach((icon, index) => {
     if (icon) {
-      icons[index] = <img key={index} src={icon} alt="icone" />;
+      icons[index] = (
+        <img
+          key={index}
+          src={icon}
+          alt="icone"
+          data-identifier="flashcard-status"
+        />
+      );
       completed++;
     }
   });
 
   return (
     <FooterConcluded>
-      <TextConcluded>
+      <TextConcluded data-identifier="flashcard-counter">
         {completed}/{deckSize} CONCLUÍDOS
       </TextConcluded>
       <Icons>{icons}</Icons>

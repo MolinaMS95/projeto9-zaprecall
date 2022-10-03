@@ -54,6 +54,7 @@ export default function Buttons(props) {
         color="red"
         onClick={() => toAnswer("#FF3030", erro)}
         disabled={!showAnswer}
+        data-identifier="forgot-btn"
       >
         Não lembrei
       </Button>
@@ -61,6 +62,7 @@ export default function Buttons(props) {
         color="yellow"
         onClick={() => toAnswer("#FF922E", quase)}
         disabled={!showAnswer}
+        data-identifier="almost-forgot-btn"
       >
         Quase não lembrei
       </Button>
@@ -68,6 +70,7 @@ export default function Buttons(props) {
         color="green"
         onClick={() => toAnswer("#2FBE34", certo)}
         disabled={!showAnswer}
+        data-identifier="zap-btn"
       >
         Zap!
       </Button>

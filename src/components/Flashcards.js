@@ -31,13 +31,16 @@ export default function Flashcards(props) {
   return (
     <>
       {pressed.includes(index) && !answered.includes(index) ? (
-        <OpenQuestion>
-          <p>{showAnswer ? answer : question}</p>
+        <OpenQuestion data-identifier="flashcard-index-item">
+          <p data-identifier="flashcard-question">
+            {showAnswer ? answer : question}
+          </p>
           {!showAnswer ? (
             <img
               onClick={() => setShowAnswer(true)}
               src={setaVirar}
               alt="seta virar"
+              data-identifier="flashcard-turn-btn"
             />
           ) : (
             <Buttons
@@ -69,6 +72,7 @@ export default function Flashcards(props) {
             }
             src={answered.includes(index) ? answerIcon[index] : setaPlay}
             alt="icone"
+            data-identifier="flashcard-show-btn"
           />
         </ClosedQuestion>
       )}

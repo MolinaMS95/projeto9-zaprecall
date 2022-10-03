@@ -29,6 +29,7 @@ export default function Questions(props) {
         setAnswerColor={setAnswerColor}
         setAnswerIcon={setAnswerIcon}
         meta={meta}
+        data-identifier="flashcard"
       />
     );
   });
