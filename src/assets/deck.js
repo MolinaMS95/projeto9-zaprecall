@@ -1,4 +1,4 @@
-const DECK = [
+const REACT = [
   {
     question: "O que é JSX?",
     answer: "Uma extensão de linguagem do JavaScript",
@@ -28,4 +28,48 @@ const DECK = [
   },
 ];
 
-export default DECK;
+const NARUTO = [
+  {
+    question:
+      "Quantas vezes Naruto reprovou o teste para entrar na academia ninja?",
+    answer: "3 vezes",
+  },
+  {
+    question:
+      "Onde Naruto e Sasuke travaram sua grande batalha durante a série clássica?",
+    answer: "No Vale do Fim",
+  },
+  {
+    question:
+      "Quantas perguntas Naruto acertou na primeira fase do exame Chunin?",
+    answer: "Nenhuma",
+  },
+  {
+    question:
+      "O que Naruto usava em sua testa antes da ganhar a bandana da folha?",
+    answer: "Um óculos de proteção",
+  },
+  {
+    question: "O que é Kekkei Genkai?",
+    answer: "São habilidades passadas geneticamente em clãs específicos",
+  },
+  {
+    question:
+      "Na rivalidade entre Kakashi e Gai, qual o número de vitórias e derrotas?",
+    answer: "51 a 50",
+  },
+  {
+    question:
+      "Quantos portões Rock Lee conseguiu abrir em sua luta contra Gaara?",
+    answer: "Cinco",
+  },
+  {
+    question:
+      "Durante o arco do resgate de Sasuke, quantos eram os inimigos contra quem os heróis lutaram?",
+    answer: "Cinco",
+  },
+];
+
+const decks = [REACT, NARUTO];
+
+export default decks;

@@ -3,9 +3,8 @@ import Questions from "./Questions";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 import { useState } from "react";
-import DECK from "../assets/deck";
 
-export default function ZapRecallMain() {
+export default function ZapRecallMain({selectedDeck}) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [pressed, setPressed] = useState([]);
   const [answered, setAnswered] = useState([]);
@@ -25,7 +24,7 @@ export default function ZapRecallMain() {
         pressed={pressed}
         setPressed={setPressed}
         answerColor={answerColor}
-        deck={DECK}
+        deck={selectedDeck}
         answerIcon={answerIcon}
       />
       <Answers
@@ -37,7 +36,7 @@ export default function ZapRecallMain() {
         setPressed={setPressed}
         answerColor={answerColor}
         setAnswerColor={setAnswerColor}
-        deckSize={DECK.length}
+        deckSize={selectedDeck.length}
         answerIcon={answerIcon}
         setAnswerIcon={setAnswerIcon}
       />
