@@ -12,7 +12,7 @@ export default function App() {
     <>
       <GlobalStyle />
       {start ? (
-        <ZapRecallMain selectedDeck={selectedDeck} />
+        <ZapRecallMain selectedDeck={selectedDeck} meta={meta}/>
       ) : (
         <WelcomeScreen
           setStart={setStart}

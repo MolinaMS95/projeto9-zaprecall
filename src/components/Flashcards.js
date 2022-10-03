@@ -1,6 +1,7 @@
 import setaPlay from "../assets/seta_play.png";
 import setaVirar from "../assets/seta_virar.png";
 import styled from "styled-components";
+import Buttons from "./Buttons";
 
 export default function Flashcards(props) {
   const {
@@ -12,8 +13,13 @@ export default function Flashcards(props) {
     showAnswer,
     setShowAnswer,
     answered,
+    setAnswered,
     answerColor,
-    answerIcon
+    answerIcon,
+    setAnswerColor,
+    setAnswerIcon,
+    size,
+    meta
   } = props;
 
   function turnAndDisable(index) {
@@ -34,11 +40,28 @@ export default function Flashcards(props) {
               alt="seta virar"
             />
           ) : (
-            ""
+            <Buttons
+              showAnswer={showAnswer}
+              answered={answered}
+              setAnswered={setAnswered}
+              pressed={pressed}
+              setPressed={setPressed}
+              setShowAnswer={setShowAnswer}
+              answerColor={answerColor}
+              setAnswerColor={setAnswerColor}
+              answerIcon={answerIcon}
+              setAnswerIcon={setAnswerIcon}
+              size={size}
+              meta={meta}
+            />
           )}
         </OpenQuestion>
       ) : (
-        <ClosedQuestion answered={answered} index={index} answerColor={answerColor}>
+        <ClosedQuestion
+          answered={answered}
+          index={index}
+          answerColor={answerColor}
+        >
           <p>{`Pergunta ` + (index + 1)}</p>
           <img
             onClick={
@@ -68,11 +91,15 @@ const ClosedQuestion = styled.div`
   p {
     font-family: "Recursive";
     font-style: normal;
-    text-decoration-line: ${props => props.answered.includes(props.index) ? "line-through" : ''};
+    text-decoration-line: ${(props) =>
+      props.answered.includes(props.index) ? "line-through" : ""};
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: ${props => props.answered.includes(props.index) ? props.answerColor[props.index] : "#333333"};
+    color: ${(props) =>
+      props.answered.includes(props.index)
+        ? props.answerColor[props.index]
+        : "#333333"};
   }
 
   img {

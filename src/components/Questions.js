@@ -1,15 +1,18 @@
 import Flashcards from "./Flashcards.js";
+import { useState } from "react";
 
 export default function Questions(props) {
+
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [pressed, setPressed] = useState([]);
+  const [answered, setAnswered] = useState([]);
+  const [answerColor, setAnswerColor] = useState([]);
+
   const {
-    showAnswer,
-    setShowAnswer,
-    pressed,
-    setPressed,
-    answered,
-    answerColor,
     deck,
-    answerIcon
+    answerIcon,
+    setAnswerIcon,
+    meta
   } = props;
   const layout = [];
 
@@ -18,6 +21,7 @@ export default function Questions(props) {
       <Flashcards
         key={index}
         index={index}
+        size={deck.length}
         question={flash.question}
         answer={flash.answer}
         pressed={pressed}
@@ -27,6 +31,10 @@ export default function Questions(props) {
         answered={answered}
         answerColor={answerColor}
         answerIcon={answerIcon}
+        setAnswered={setAnswered}
+        setAnswerColor={setAnswerColor}
+        setAnswerIcon={setAnswerIcon}
+        meta={meta}
       />
     );
   });

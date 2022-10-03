@@ -1,14 +1,10 @@
-import Answers from "./Answers";
+import Footer from "./Footer";
 import Questions from "./Questions";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 import { useState } from "react";
 
-export default function ZapRecallMain({selectedDeck}) {
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [pressed, setPressed] = useState([]);
-  const [answered, setAnswered] = useState([]);
-  const [answerColor, setAnswerColor] = useState([]);
+export default function ZapRecallMain({selectedDeck, meta}) {
   const [answerIcon, setAnswerIcon] = useState([]);
 
   return (
@@ -18,27 +14,14 @@ export default function ZapRecallMain({selectedDeck}) {
         <h1>ZapRecall</h1>
       </LogoContainer>
       <Questions
-        showAnswer={showAnswer}
-        setShowAnswer={setShowAnswer}
-        answered={answered}
-        pressed={pressed}
-        setPressed={setPressed}
-        answerColor={answerColor}
         deck={selectedDeck}
         answerIcon={answerIcon}
+        setAnswerIcon={setAnswerIcon}
+        meta={meta}
       />
-      <Answers
-        showAnswer={showAnswer}
-        setShowAnswer={setShowAnswer}
-        answered={answered}
-        setAnswered={setAnswered}
-        pressed={pressed}
-        setPressed={setPressed}
-        answerColor={answerColor}
-        setAnswerColor={setAnswerColor}
+      <Footer
         deckSize={selectedDeck.length}
         answerIcon={answerIcon}
-        setAnswerIcon={setAnswerIcon}
       />
     </ScreenContainer>
   );
